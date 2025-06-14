@@ -1,0 +1,361 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: $header-height;
+  border-bottom: 1px solid $light-grey;
+  background-color: $light-bg;
+  z-index: 1;
+}
+
+.titel {
+  @extend %text-capitalize;
+  color: $primary-color;
+
+  display: none;
+}
+
+.menu {
+  @include flex-center(column, 10px);
+  list-style: none;
+
+  li {
+    padding: 5px;
+  }
+
+  a {
+    color: $secondary-color;
+    text-decoration: none;
+    @extend %text-capitalize;
+  }
+}
+
+.item-list {
+  border-bottom: 1px solid $light-grey;
+}
+
+//------------------------------------------------------------------HOME------------------------------------------------------------------
+.main-container {
+  @include grid-columns;
+  section {
+    min-height: calc(100vh - $header-height-mobile);
+  }
+}
+
+.section-home {
+  background-color: $home-bg;
+}
+
+.titulo-inicio {
+  @include flex-center(column);
+  height: 100%;
+
+  h2 {
+    @extend %title-style;
+    font-size: $font-md;
+  }
+
+  p {
+    text-align: center;
+    margin: 15px 0;
+    color: $hover-grey;
+    font-size: $font-sm;
+  }
+}
+
+.btn-container {
+  @include flex-center(row, 8px);
+  width: 100%;
+}
+
+.btn {
+  @include button-style(transparent);
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.btn-contacto {
+  background-color: $primary-color;
+}
+
+.btn-categorias {
+  background-color: transparent;
+
+  a {
+    color: $primary-color;
+  }
+}
+
+//------------------------------------------------------------------Recomendaciones------------------------------------------------------------------
+#recomendaciones {
+  min-height: 60vh;
+}
+
+.titulo-recomendaciones {
+  @include flex-center;
+  @extend %text-capitalize;
+  margin-top: 30px;
+  color: $secondary-color;
+}
+
+.home-recomendaciones {
+  @include grid-columns;
+  gap: 20px;
+  margin-top: 20px;
+
+  article {
+    @include flex-center;
+    position: relative;
+    height: 100%;
+
+    img {
+      border-radius: 10px;
+      box-shadow: $shadow;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    h3 {
+      position: absolute;
+      bottom: 10px;
+      width: 40%;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid $light-grey;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.4)
+      );
+      @extend %text-capitalize;
+      text-align: center;
+    }
+  }
+}
+//------------------------------------------------------------------Ofertas------------------------------------------------------------------
+
+#ofertas {
+  min-height: 60vh;
+}
+
+.nuestras-ofertas {
+  @include flex-center;
+  @extend %text-capitalize;
+  margin-top: 30px;
+  color: $secondary-color;
+}
+
+.home-ofertas {
+  @include grid-columns;
+  gap: 20px;
+  margin-top: 20px;
+
+  article {
+    @include flex-center;
+    position: relative;
+    height: 100%;
+
+    img {
+      border-radius: 10px;
+      box-shadow: $shadow;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    h3 {
+      position: absolute;
+      bottom: 10px;
+      width: 40%;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid $light-grey;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.4)
+      );
+      @extend %text-capitalize;
+      text-align: center;
+    }
+  }
+}
+
+//------------------------------------------------------------------Contacto------------------------------------------------------------------
+#contacto {
+  min-height: 60vh;
+}
+
+.form {
+  @include flex-center(column, 20px);
+  margin-top: 20px;
+
+  .btn-contacto {
+    @include button-style($primary-color);
+    align-self: flex-start;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+  }
+}
+
+.form-group {
+  @include flex-center(column, 5px);
+  width: 50%;
+  @extend %text-capitalize;
+  color: $secondary-color;
+
+  input,
+  textarea {
+    border: 2px solid $primary-color;
+    padding: 5px;
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+  }
+}
+
+.form-btn {
+  width: 50%;
+}
+
+//------------------------------------------------------------------Footer------------------------------------------------------------------
+.foot {
+  @include grid-columns;
+}
+
+.footer {
+  padding: 1rem;
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: 2rem;
+    @extend %text-capitalize;
+  }
+
+  &-bottom {
+    border-top: 1px solid $primary-color;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  img {
+    gap: 10px;
+  }
+}
+
+.atajos {
+  @include grid-columns;
+  gap: 1rem;
+  @extend %text-capitalize;
+
+  li,
+  a {
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+    width: fit-content;
+  }
+
+  li:hover {
+    color: $primary-color;
+  }
+}
+
+.redes {
+  @include flex-center(row, 1rem);
+
+  img:hover {
+    scale: 1.2;
+  }
+}
+
+//------------------------------------------------------------------QUERIES------------------------------------------------------------------
+@media (min-width: $bp-sm) {
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    @include flex-center(row, 0);
+    justify-content: space-around;
+    height: $header-height-mobile;
+  }
+
+  .item-list {
+    border: none;
+  }
+
+  .titulo-inicio {
+    h2 {
+      font-size: $font-lg;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+
+  .home-recomendaciones {
+    gap: 30px;
+  }
+}
+
+@media (min-width: $bp-md) {
+  .menu {
+    gap: 20px;
+    li:hover {
+      background-color: $light-grey;
+      border-radius: 10px;
+    }
+  }
+
+  .home-recomendaciones {
+    @include grid-columns(3);
+    margin-top: 40px;
+    gap: 20px;
+
+    .home-ofertas {
+    @include grid-columns(3);
+    margin-top: 40px;
+    gap: 20px;
+
+    article {
+      img {
+        width: 80%;
+        height: 100%;
+      }
+
+      h3 {
+        width: 70%;
+        padding: 15px;
+        border-radius: 15px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .foot {
+    @include grid-columns(3);
+  }
+
+  .footer {
+    padding: 4rem 5% 2rem;
+  }
+}
